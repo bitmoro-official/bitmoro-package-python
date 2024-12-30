@@ -1,0 +1,22 @@
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / Packaging
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+
+# Logs
+*.log
+*.out
+*.err
+logs/
+
+# Virtual Environments
+venv/
+env/
+*.virtualenv
