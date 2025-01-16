@@ -11,7 +11,7 @@ async def main():
     
     ## OTP MESSAGE
     # otp_manager = await client.get_otp_manager()
-    # phone_number = "9869363132"
+    # phone_number = "98xxxxxxxx"
     # otp = otp_manager.generate_otp(phone_number)
     # print(f"Generated OTP for {phone_number}: {otp}")
     # otp_send_response = await otp_manager.send_otp(
@@ -30,7 +30,7 @@ async def main():
     
     # bulk_response = await client.send_bulk_message(
     # message="ranodm ",
-    # numbers=["9869363132"],
+    # numbers=["98XXXXXXXX"],
     # callback_url="https://demo.requestcatcher.com/test"
     # )
     # print("Bulk message response:", bulk_response)
@@ -42,8 +42,8 @@ async def main():
     # dynamic_response = await client.send_dynamic_message(
     #     message="Hello, ${name}!",
     #     contacts=[
-    #         {"number": "9869363132", "name": "ramu"},
-    #         # {"number": "9862937055"}
+    #         {"number": "98XXXXXXXX", "name": "ramu"},
+    #         # {"number": "98XXXXXXXX"}
     #     ],
     #     sender_id="BIT_MORE",
     #     scheduled_date=int(time.time())+60,  # Optional
