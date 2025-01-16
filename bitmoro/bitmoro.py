@@ -62,7 +62,7 @@ class Bitmoro:
             "contacts":contacts,
             "message":message,
             "senderId":sender_id,
-            "scheduled_date":scheduled_date,
+            "scheduledDate":scheduled_date,
             "callbackUrl":callback_url,
             "defaultValues":default_value
         }

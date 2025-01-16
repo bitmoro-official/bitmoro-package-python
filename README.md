@@ -40,7 +40,7 @@ To begin, import the `Bitmoro` class and initialize it with your API token:
 Follow the link to get API key. [API Docs](https://bitmoro.com/blog/api-integration-for-bulk-sms-service-with-bitmoro)
 
 ```python
-from bitmoro import Bitmoro
+from bitmoro.bitmoro import Bitmoro
 
 token = "<YOUR_API_TOKEN>"
 client = Bitmoro(token)
@@ -78,13 +78,14 @@ else:
 
 ### Sending Bulk Messages
 To send bulk messages:
+import time
 
 ```python
 bulk_response = await client.send_bulk_message(
     message="Hello, this is a test message", #required
     numbers=["98XXXXXXXX"],  #required
     sender_id="BIT_MORE",  #optional
-    scheduled_date=int(time.time()) + 60, #optional
+    scheduled_date=int(time.time()*1000) + 60*1000, #unix time stamp in millisecond of future date. Optional
     callback_url="https://your-callback-url.com/test" #optional
 )
 print("Bulk message response:", bulk_response)
@@ -101,7 +102,7 @@ dynamic_response = await client.send_dynamic_message(
         {"number": "98XXXXXXXX"}
     ],   #required
     sender_id="BIT_MORE", #optional
-    scheduled_date=int(time.time()) + 60,  # optional
+    scheduled_date=int(time.time()*1000) + 60*1000,  #unix time stamp in millisecond of future date. Optional
     default_value={"name": "User"}, #optional
     callback_url= "https://your-callback-url.com/test" #optional
 )
@@ -152,7 +153,8 @@ async def main():
     phone_number = "98XXXXXXXX"
     otp = otp_manager.generate_otp(phone_number)
     print(f"Generated OTP for {phone_number}: {otp}")
-
+    
+    #Sending single message
     otp_send_response = await otp_manager.send_otp(
         phone_number=phone_number,
         message_template=f"Your OTP is: {otp}"
@@ -165,6 +167,32 @@ async def main():
         print("OTP verified successfully!")
     else:
         print("OTP verification failed.")
+
+    #sending Bulk Message
+    BULK MESSAGE 
+    
+    bulk_response = await client.send_bulk_message(
+    message="ranodm ",
+    numbers=["98XXXXXXXX"],
+    callback_url="https://demo.requestcatcher.com/test",
+    scheduledDate=int(time.time()*1000) + 60*1000,
+    )
+    print("Bulk message response:", bulk_response)
+    
+    # Send a dynamic message
+    dynamic_response = await client.send_dynamic_message(
+        message="Hello, ${name}!",
+        contacts=[
+            {"number": "98XXXXXXXX", "name": "ramu"},
+            {"number": "98XXXXXXXX"}
+        ],
+        sender_id="BIT_MORE",
+        scheduledDate=int(time.time()*1000) + 60*1000,  # Optional
+        default_value={"name": "User"},
+        # callback_url=None  # Optional
+    )
+    print("Dynamic message response:", dynamic_response)
+    
 
 asyncio.run(main())
 ```
