@@ -13,7 +13,6 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="Bitmoro Dev Team",
-    url="https://github.com/bitmoro/bitmoro-sdk",
     packages=find_packages(),
     python_requires=">=3.6",
     classifiers=[
