@@ -25,9 +25,4 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    # project_urls={
-    #     "Documentation": "https://github.com/bitmoro/bitmoro-sdk#readme",  # Replace with your docs URL
-    #     "Source": "https://github.com/bitmoro/bitmoro-sdk",  # Replace with your repo URL
-    #     "Tracker": "https://github.com/bitmoro/bitmoro-sdk/issues",  # Replace with your issue tracker URL
-    # },
 )
