@@ -4,7 +4,7 @@ from datetime import datetime
 import secrets
 
 class Bitmoro:
-    BASE_URL = "https://www.bitmoro.com/api/message"
+    BASE_URL = "https://api.bitmoro.com/message"
     
     def __init__(self,token:str):
         self.token =token
@@ -44,7 +44,7 @@ class Bitmoro:
         }
         
         data = {key: value for key , value in data.items() if value is not None}
-        response = await self._make_request("bulk-api",data)
+        response = await self._make_request("api/bulk",data)
         return response
 
     async def send_dynamic_message(
@@ -67,7 +67,24 @@ class Bitmoro:
             "defaultValues":default_value
         }
         data={key: value for key , value in data.items() if value is not None}
-        response = await self._make_request("dynamic-api",data)
+        response = await self._make_request("api/dynamic",data)
+        return response
+    
+    async def send_high_priority_message(
+        self,
+        message_template:str,
+        phone_number:str,
+        sender_id:str=None,
+        )->dict:
+        """Send dynamic messages with templates."""
+        
+        data = {
+            "message": message_template,
+            "number": phone_number,
+            "senderId": sender_id 
+        }
+        data={key: value for key , value in data.items() if value is not None}
+        response = await self._make_request("api/single-message",data)
         return response
     
     async def get_otp_manager(
@@ -80,7 +97,7 @@ class Bitmoro:
         
 class OtpManager:
     """Manage OTP generation, verification, and sending."""
-    BASE_URL = "https://bitmoro.com/api/message/api"
+    BASE_URL = "https://api.bitmoro.com/message/api/single-message"
     
     def __init__(
         self,
@@ -134,7 +151,7 @@ class OtpManager:
         """Send OTP via SMS."""  
         data = {
             "message": message_template,
-            "number": [phone_number],
+            "number": phone_number,
             "senderId": sender_id 
         }
         data = {key: value for key, value in data.items() if value is not None}

@@ -91,6 +91,20 @@ bulk_response = await client.send_bulk_message(
 print("Bulk message response:", bulk_response)
 ```
 
+### Sending High Priority Message
+
+For high priority message, use the `send_high_priority_message` method:
+These messages are sent with high priority and are delivered instantly unlike others.
+
+```python
+response = await client.send_high_priority_message(
+    message_template="TEST!",
+    phone_number="98xxxxxxxx",
+    sender_id="joe_alert",
+)
+print("Message response:",response)
+```
+
 ### Sending Dynamic Messages
 For personalized messages, use the `send_dynamic_message` method:
 
@@ -121,7 +135,7 @@ When a callback URL is provided, it receives a POST request containing the follo
     {
       "number": "98XXXXXXXX",
       "status": "success",
-      "message": "Sent.",
+      "message": "Sent",
       "creditCount": 1
     }
   ],

@@ -6,7 +6,7 @@ async def get_user_input():
     return input("Enter the OTP you received: ")
 
 async def main():
-    token = "<TOKEN>"
+    token = "<API_TOKEN>"
     client = Bitmoro(token)
     
     ## OTP MESSAGE
@@ -51,5 +51,11 @@ async def main():
     #     # callback_url=None  # Optional
     # )
     # print("Dynamic message response:", dynamic_response)
+    
+    # response = await client.send_high_priority_message(
+    #         message_template="hii broski",
+    #         phone_number="98xxxxxxxx",
+    # )
+    # print(response)
 
 asyncio.run(main())
